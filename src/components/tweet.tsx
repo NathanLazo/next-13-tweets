@@ -1,16 +1,16 @@
 import type { FC } from "react";
 import Avatar from "boring-avatars";
-import { User } from "@clerk/nextjs/dist/types/server";
-import { PrismaClient } from "@prisma/client";
+import { Message, PrismaClient } from "@prisma/client";
 
-interface tweetProps {
-  user: User;
-}
+const tweet: FC = async () => {
+  let tweets: Message[] = [];
 
-const tweet: FC<tweetProps> = async ({ user }) => {
-  const prisma = new PrismaClient();
-
-  const tweets = await prisma.message.findMany();
+  try {
+    const prisma = new PrismaClient();
+    tweets = await prisma.message.findMany();
+  } catch (e) {
+    console.error(e);
+  }
 
   return (
     <>
