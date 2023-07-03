@@ -14,7 +14,7 @@ export default async function Home() {
       </div>
       <div className='flex flex-col items-center justify-center mt-10'>
         <Input user={user} />
-        <Tweet user={user} />
+        <Tweet />
       </div>
     </>
   );
